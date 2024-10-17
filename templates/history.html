@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sales/Purchase History
+{% endblock %}
+
+{% block main %}
+
+    <head>
+        <style>
+        table {
+            border-collapse: collapse; /* Collapse cell borders into a single border */
+            width: 100%; /* Make the table take up the full width of its container */
+            text-align: left; /* Align text to extreme left for whole table */
+        }
+
+        th, td {
+            border: 1px solid #9FF; /* Add a 1px solid black border around each cell */
+            padding: 10px; /* Adjust the padding to control spacing around the content */
+        }
+        </style>
+    </head>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.symbol }}</td>
+                <td>{{ transaction.shares }}</td>
+                <td>{{ transaction.price }}</td>
+                <td>{{ transaction.shares * transaction.price }}</td>
+                <td>{{ transaction.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

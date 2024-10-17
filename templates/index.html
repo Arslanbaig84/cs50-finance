@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block main %}
+
+    <head>
+        <style>
+        table {
+            border-collapse: collapse; /* Collapse cell borders into a single border */
+            width: 100%; /* Make the table take up the full width of its container */
+            text-align: left; /* Align text to extreme left for whole table */
+        }
+
+        th, td {
+            border: 1px solid #9FF; /* Add a 1px solid black border around each cell */
+            padding: 10px; /* Adjust the padding to control spacing around the content */
+        }
+        </style>
+    </head>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total Shares Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.total_shares }}</td>
+                <td>{{ stock.price }}</td>
+                <td>{{ stock.price * stock.total_shares }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Cash</td>
+                <td>{{ cash }}</td>
+            </tr>
+            <tr>
+                <td>Total Value</td>
+                <td>{{ total_value }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
